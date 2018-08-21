@@ -21,12 +21,12 @@ spec:
         annotations:
           annotation1: prometheus
       spec:
-        storageClassName: ssd
+        storageClassName: standard
         resources:
           requests:
-            storage: 40Gi
+            storage: 10Gi
     requests:
-      memory: 2Gi
+      memory: 1Gi
   alerting:
     alertmanagers:
     - namespace: monitoring
