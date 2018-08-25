@@ -1,16 +1,13 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: alertmanager
+  name: ambassador-monitor
   labels:
-    k8s-app: alertmanager
+    ambassador: monitoring
 spec:
   selector:
     matchLabels:
-      alertmanager: main
-  namespaceSelector:
-    matchNames:
-    - CUSTOM_NAMESPACE
+      service: ambassador-monitor
   endpoints:
-  - port: web
+  - port: prometheus-metrics
     interval: 30s
