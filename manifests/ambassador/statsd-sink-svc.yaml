@@ -8,6 +8,7 @@ metadata:
 spec:
   selector:
     service: ambassador
+    tier: frontend
   type: ClusterIP
   clusterIP: None
   ports:

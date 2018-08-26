@@ -4,12 +4,15 @@ metadata:
   name: ambassador-monitor
   labels:
     ambassador: monitoring
+    tier: frontend
 spec:
   selector:
     matchLabels:
+      tier: frontend
       service: ambassador-monitor
   endpoints:
   - port: prometheus-metrics
+    interval: 10s
   namespaceSelector:
     matchNames:
     - default
