@@ -4,15 +4,21 @@ metadata:
   name: ambassador-monitor
   labels:
     ambassador: monitoring
+    k8s-app: ambassador
     tier: frontend
 spec:
+  jobLabel: ambassador
   selector:
     matchLabels:
       tier: frontend
       service: ambassador-monitor
+      k8s-app: ambassador
   endpoints:
   - port: prometheus-metrics
     interval: 10s
   namespaceSelector:
     matchNames:
     - default
+  targetLabels:
+    - ambassador
+    - k8s-app
