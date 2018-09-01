@@ -1,7 +1,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
-  name: prometheus
+  name: prometheus-monitoring
+  labels:
+    prometheus: ambassador
 spec:
   serviceAccountName: prometheus
   serviceMonitorSelector:
@@ -9,4 +11,4 @@ spec:
       ambassador: monitoring
   resources:
     requests:
-      memory: 200Mi
+      memory: 300Mi

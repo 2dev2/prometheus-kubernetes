@@ -5,10 +5,16 @@ metadata:
   labels:
     prometheus: frontend
 spec:
-  serviceMonitors:
-    matchLabels:
-      tier: frontend
-      service: ambassador-monitor
+  serviceMonitorSelector:
+    matchExpressions:
+    - {key: ambassador-monitor, operator: Exists}
+    - {key: k8s-app, operator: Exists}
+    - ambassador: monitoring
+    - key: ambassador
+      operator: In
+      values:
+      - "true"
+
   resources:
     requests:
       memory: 200Mi
