@@ -10,3 +10,6 @@ spec:
       service: ambassador-monitor
   endpoints:
   - port: prometheus-metrics
+  namespaceSelector:
+    matchNames:
+    - default
